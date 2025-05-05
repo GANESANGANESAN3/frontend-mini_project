@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Portal Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #2980b9, #8e44ad);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    input[type="radio"] {
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+  <form action="" onsubmit="bthfun(event)">
+    <h2>User Login Page</h2>
+
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required placeholder="Enter Name">
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required placeholder="Enter Email">
+    </div>
+
+    <div>
+      <label for="phone">Phone No:</label>
+      <input type="tel" id="phone" maxlength="10" minlength="10" required placeholder="Enter Phone Number">
+    </div>
+
+    <div>
+      <label id="you_are">You Are:</label><br>
+      <input type="radio" id="student" name="you_are" value="Student" required>
+      <label for="student">Student</label><br>
+
+      <input type="radio" id="looking_for_job" name="you_are" value="Looking For Job" required>
+      <label for="looking_for_job">Looking For Job</label><br>
+
+      <input type="radio" id="working_professional" name="you_are" value="Working Professional" required>
+      <label for="working_professional">Working Professional</label>  
+    </div>
+
+    <div>
+      <label for="address">Address:</label>
+      <textarea name="address" id="address" rows="4" cols="30" required placeholder="Enter Address"></textarea>
+    </div>
+
+    <div>
+      <button type="submit">Register</button>
+    </div>
+
+  </form>
+  <script>
+  function bthfun(event){
+  event.preventDefault();
+
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let address = document.getElementById("address").value.trim();
+  let you_are = document.querySelector('input[name="you_are"]:checked');
+
+  if(!name || !email || !phone || !you_are || !address){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Please fill all the fields properly!'
+    });
+  }
+  else{
+    Swal.fire({
+      icon: 'success',
+      title: 'Registered Successfully!',
+      text: 'Thank you for registering!',
+      showConfirmButton: true,
+      confirmButtonText: 'Go to Home'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "index.html"; // Redirect after success
+      }
+    });
+  }
+}
+</script>
+</body>
+</html>

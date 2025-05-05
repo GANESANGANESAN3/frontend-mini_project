@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bus Pass Management</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to right, #a1ffce, #faffd1);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .form {
+      width: 90%;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      color: #fff;
+    }
+    .form h3 {
+      padding-bottom: 10px;
+      color: #2ae079;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+    }
+    .form div {
+      margin: 10px 0;
+    }
+    .whitebox {
+      width: 30vh;
+      padding: 10px 10px;
+      background-color: white;
+      color: #000;
+      font-weight: 600;
+      border-radius: 5px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: #2ae079;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #24c168;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="form">
+    <form id="busPassForm">
+      <h3>Official Information</h3>
+      <div>
+        <label for="">Application No:</label>
+        <p class="whitebox">NEW PASS</p>
+      </div>
+      <div>
+        <label for="">Pass Type:</label>
+        <select name="passType" required>
+          <option value="">Select Pass Type</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Yearly">Yearly</option>
+        </select>
+      </div>
+      <div>
+        <label for="fromDistrict">From District:</label>
+        <input type="text" name="fromDistrict" id="fromDistrict" placeholder="Enter start district" required />
+      </div>
+      <div>
+        <label for="toDistrict">To District:</label>
+        <input type="text" name="toDistrict" id="toDistrict" placeholder="Enter destination district" required />
+      </div>
+      <div>
+        <label for="">Passenger Type:</label>
+        <p class="whitebox">COMMUTER PASS</p>
+      </div>
+
+      <h3>Personal Information</h3>
+      <div>
+        <label>Commuter Name:</label>
+        <input type="text" name="commuterName" required />
+      </div>
+      <div>
+        <label>Address:</label>
+        <textarea name="address" required></textarea>
+      </div>
+      <div>
+        <label>Date Of Birth:</label>
+        <input type="date" name="dob" required />
+      </div>
+      <div>
+        <label>Gender:</label>
+        <select name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="transgender">Transgender</option>
+        </select>
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Enter Email" required />
+      </div>
+      <div>
+        <label>Phone No:</label>
+        <input type="text" name="phone" placeholder="Enter Mobile Number" required minlength="10" maxlength="10" />
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("busPassForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const allFilled = Array.from(form.elements).every((element) => {
+        return element.type === "submit" || element.value.trim() !== "";
+      });
+
+      if (allFilled) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: '✅ Bus Pass Card will be sent to your address shortly.',
+          confirmButtonText: 'OK',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        }).then(() => {
+          window.location.href = "index.html";
+        });
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Incomplete Form',
+          text: 'Please fill all required fields.',
+          confirmButtonText: 'Got it!'
+        });
+      }
+    });
+  </script>
+</body>
+</html>

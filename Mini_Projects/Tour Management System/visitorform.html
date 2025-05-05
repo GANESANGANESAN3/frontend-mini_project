@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Tours</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin: 15px auto;
+            width: 80%;
+            text-align: center;
+        }
+        form {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        form h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        form div {
+            margin-bottom: 20px;
+        }
+        form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #3498db;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Royal Tours</h1>
+    <p>We Make Sweet Memories</p>
+    <p>
+        Travelling often offers stress reduction and enjoyment. However, in today’s world travelling provides a variety of experiences with versatility. As many people planning for a trip frequently, they seek help from professionals for organising the trip for better exposure. As a best travel agency in Coimbatore, we offer a wide range of services with budget-friendly packages. Our professional guides will guide you from the beginning of your trip and return safely.
+    </p>
+    <p>
+       Planning a trip is not only about bookings and reservations but also about aligning your journey within the budget with better exposure. There are many challenges involved in planning a trip by spending countless hours researching, here we will handle every travelling detail so you can enjoy your journey with your full heart.
+    </p>
+
+    <form action="" onsubmit="bthfun(event)">
+      <h1>Reach Us Any Time</h1>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter Name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter email" required>
+      </div>
+      <div>
+        <label for="Phone">Phone No:</label>
+        <input type="tel" id="Phone" placeholder="Enter Mobile Number" required>
+      </div>
+      <div>
+        <label for="month">Month Of Travel</label>
+        <select name="month of travel" id="month">
+          <option value="Select">Select</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Write Your Message</label>
+        <textarea name="message" id="message" placeholder="What's On Your Mind" required></textarea>
+      </div>
+      <div>
+        <button type="submit">Submit Now</button>
+      </div>
+    </form>
+
+    <script>
+      function bthfun(event){
+        event.preventDefault();
+        
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let Phone = document.getElementById("Phone").value.trim();
+        let month = document.getElementById("month").value.trim();
+
+        if(!name || !email || !Phone || !month){
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please fill all the fields properly!'
+          });
+        } else {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registered Successfully!',
+            text: 'Thank you for visiting! More details will be shared with you shortly. Our team will contact you.',
+            showConfirmButton: true
+          });
+        }
+      }
+    </script>
+
+</body>
+</html>

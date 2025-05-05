@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Apply Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group input[type="radio"] {
+            margin-top: 10px;
+        }
+
+        .form-group input[type="radio"]:checked {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="apply(event)">
+        <h2>Job Application</h2>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" placeholder="Enter Name" required id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" placeholder="Enter Email" required id="email">
+        </div>
+
+        <div class="form-group">
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.txt" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function apply(event){
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let resume = document.getElementById("resume").files.length;  // Check if a file is selected
+
+            if (!name || !email || resume === 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please fill all the fields properly!'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'APPLY SUCCESSFULLY!',
+                    text: 'Thank you for APPLYING!',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Go to Home'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "index.html"; // Redirect after success
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

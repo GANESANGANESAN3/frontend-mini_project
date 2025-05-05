@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Book Now</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #e6ffe6, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2em;
+            color: #2f5d34;
+            background-color: #c6e2c6;
+            border-bottom: 3px solid #91c691;
+        }
+
+        .scooty1,.scooty2,.bike1,.bike2,.bike3,.car1,.car2,.car3 {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .img {
+            flex: 1 1 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f8f0;
+        }
+
+        .img img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .text {
+            flex: 2 1 400px;
+            padding: 25px;
+            background-color: #f9fff9;
+        }
+
+        .text p {
+            font-size: 1.1em;
+            color: #4d4d4d;
+            margin: 12px 0;
+        }
+
+        .text strong {
+            color: #2d5c2d;
+        }
+
+        .text span {
+            color: #1a7c1a;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #78c378;
+            color: white;
+            padding: 12px 25px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5aa95a;
+        }
+
+        @media (max-width: 768px) {
+            .scooty1,.scooty2,.bike1,.bike2,.bike3,.car1,.car2,.car3{
+                flex-direction: column;
+            }
+
+            .img, .text {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Available Vehicles</h2>
+    <div class="scooty1">
+        <div class="img">
+            <img src="Media/dio_scooty.jpg" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="scooty1price">₹200</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button >BOOK NOW</button>
+        </div>
+    </div>  
+    <div class="scooty2">
+        <div class="img">
+            <img src="Media/jupiter_scooty.avif" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="scooty2price">₹200</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div>
+    <div class="bike1">
+        <div class="img">
+            <img src="Media/bike-.jpg" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="bike1price">₹600</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div><div class="bike2">
+        <div class="img">
+            <img src="Media/Yamaha_bike.webp" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="bike2price">₹500</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div>
+    <div class="bike3">
+        <div class="img">
+            <img src="/Media/PulsarNS125_bike.png" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="bike3price">₹500</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div>
+    <div class="car1">
+        <div class="img">
+            <img src="Media/car2_img.webp" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="car1price">₹750</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div><div class="car2">
+        <div class="img">
+            <img src="Media/car1_img.jpg" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="car2price">₹850</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div>
+    <div class="car3">
+        <div class="img">
+            <img src="Media/car_img.webp" alt="Dio Scooty">
+        </div>
+        <div class="text">
+            <p><strong>Per Hour:</strong> <span id="car3price">₹900</span></p>
+            <p><strong>Mileage:</strong> Excellent fuel efficiency for long rides</p>
+            <p><strong>Condition:</strong> Fully serviced & well-maintained</p>
+            <p><strong>Availability:</strong> 24/7 For Rental</p>
+            <button>BOOK NOW</button>
+        </div>
+    </div>
+    <script>
+        window.onload=function(){
+            const buttons=document.querySelectorAll("button");
+            buttons.forEach(button=>{button.addEventListener("click",function(){
+        const parentText = button.closest(".text");
+        const pricePerHour = parentText.querySelector("span").innerText;
+        const perHours = parseInt(pricePerHour.replace("₹",""))
+        const hours=prompt("Enter Number of hours you want to book: ");
+           
+       if(hours && !isNaN(hours) && hours > 0){
+        const total=perHours*hours;
+       alert(
+         `Total Amout: ₹${total}\n`+
+         `Please pay in advance to reserve the vehicle. \n`+
+         `Pay the remaining balance to return.\n`+
+         `Booking Successful!`
+       );
+       }
+       else {
+         alert("Please enter a valid number of hours.");
+       }
+
+    });
+});
+};
+    </script>
+</body>
+</html>

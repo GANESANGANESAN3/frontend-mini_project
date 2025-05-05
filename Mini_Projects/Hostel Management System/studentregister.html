@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: antiquewhite;
+            margin: 0;
+            padding: 0;
+        }
+        .form {
+            width: 400px;
+            margin: 100px auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 7px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+            padding: 10px;
+            color: burlywood;
+        }
+        label {
+            font-weight: bolder;
+            margin-left: 35px;
+            color: azure;
+            display: block;
+            text-align: left;
+        }
+        input {
+            text-align: center;
+            padding: 9px;
+            margin: 10px;
+            border: none;
+            font-weight: 900;
+            border-radius: 10px;
+            box-sizing: border-box;
+            width: 80%;
+        }
+        button {
+            font-size: 20px;
+            border-radius: 7px;
+            padding: 8px 17px;
+            font-weight: bolder;
+            background-color: aquamarine;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <form class="form" onsubmit="bthfun(event)">
+        <div>
+            <h2>Student Registration Form</h2>
+        </div>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Enter your age" required>
+
+        <label for="course">Course / Department:</label>
+        <input type="text" id="course" placeholder="e.g., Computer Science">
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required maxlength="10" minlength="10" placeholder="Enter phone number">
+
+        <label for="room">Allocation Room No:</label>
+        <input type="number" id="room" placeholder="Enter room number" min="1" max="25" required>
+
+        <br>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function bthfun(event) {
+            event.preventDefault(); // ✅ Fixed typo
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const age = document.getElementById("age").value.trim();
+            const course = document.getElementById("course").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const room = document.getElementById("room").value.trim();
+
+            if (!name || !email || !age || !course || !phone || !room) {
+                alert("Please fill all the fields.");
+                return;
+            }
+
+            // Get existing student data from localStorage
+            let students = JSON.parse(localStorage.getItem("students")) || [];
+
+            // Check if room is already taken
+            const roomTaken = students.some(student => student.room == room);
+            if (roomTaken) {
+                alert("Room number already taken. Please choose another room.");
+                return;
+            }
+
+            // Save new student data
+            const newStudent = {
+                name,
+                email,
+                age,
+                course,
+                phone,
+                room
+            };
+
+            students.push(newStudent);
+            localStorage.setItem("students", JSON.stringify(students));
+
+            alert("Student registered successfully!");
+            window.location.href = "index.html"; // Go back to main page
+        }
+    </script>
+</body>
+</html>

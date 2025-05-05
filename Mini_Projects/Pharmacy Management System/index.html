@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pharmacy Management || Pharmacy Inventory</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      flex-wrap: wrap;
+    }
+
+    header h2 {
+      font-size: 1.8em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #1abc9c;
+    }
+
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    aside {
+      background-color: #ecf0f1;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 1px solid #bdc3c7;
+    }
+
+    aside h3 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    aside p {
+      font-size: 1em;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      main, aside {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>A Mini Pharmacy Management System</h2>
+    <nav>
+      <a href="medicineupload.html" class="upload">Medicine Upload</a>
+      <a href="#about" class="about">About Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to the Pharmacy Inventory System</h1>
+    <p>Manage your medicine stock efficiently and keep your records up-to-date with ease.</p>
+
+  <h1>Medicine Inventory</h1>
+  <button onclick="clearAll()" style="
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  ">Clear All</button>
+
+  <div id="medicine-list"></div>
+
+  </main>
+  <aside>
+    <h3 id="about">About Us</h3>
+    <p>Welcome to our mini pharmacy system designed to simplify medicine inventory tracking. Built for pharmacies, by pharmacy enthusiasts.</p>
+  </aside>
+  <script>
+    const medicineList = document.getElementById("medicine-list");
+
+    function loadMedicines()  {
+      const medicines = JSON.parse(localStorage.getItem("medicines")) || [];
+
+      if (medicines.length === 0) {
+        medicineList.innerHTML = "<p>No medicines uploaded yet.</p>";
+        return;
+      }
+
+      const table = document.createElement("table");
+      table.style.width = "100%";
+      table.style.borderCollapse = "collapse";
+
+      table.innerHTML = `
+        <tr style="background-color:#1abc9c; color:white;">
+          <th style="padding:10px; border:1px solid #ddd;">Name</th>
+          <th style="padding:10px; border:1px solid #ddd;">Purchase Date</th>
+          <th style="padding:10px; border:1px solid #ddd;">Expiry Date</th>
+          <th style="padding:10px; border:1px solid #ddd;">Price (₹)</th>
+          <th style="padding:10px; border:1px solid #ddd;">Quantity</th>
+          <th style="padding:10px; border:1px solid #ddd;">Action</th>
+        </tr>
+      `;
+
+      medicines.forEach((med, index) => {
+        table.innerHTML += `
+          <tr>
+            <td style="padding:10px; border:1px solid #ddd;">${med.name}</td>
+            <td style="padding:10px; border:1px solid #ddd;">${med.purchse}</td>
+            <td style="padding:10px; border:1px solid #ddd;">${med.expiry}</td>
+            <td style="padding:10px; border:1px solid #ddd;">₹${med.price}</td>
+            <td style="padding:10px; border:1px solid #ddd;">${med.qty}</td>
+            <td style="padding:10px; border:1px solid #ddd;">
+              <button onclick="deleteMedicine(${index})" style="
+                background-color: #c0392b;
+                color: white;
+                padding: 5px 10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+              ">Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      medicineList.innerHTML = ""; // clear previous
+      medicineList.appendChild(table);
+    }
+
+    function deleteMedicine(index) {
+      const medicines = JSON.parse(localStorage.getItem("medicines")) || [];
+      medicines.splice(index, 1); // remove the one item
+      localStorage.setItem("medicines", JSON.stringify(medicines));
+      loadMedicines(); // reload table
+    }
+
+    function clearAll() {
+      if (confirm("Are you sure you want to delete all medicines?")) {
+        localStorage.removeItem("medicines");
+        loadMedicines();
+      }
+    }
+
+    // Initial load
+    loadMedicines();
+  </script>
+
+</body>
+</html>

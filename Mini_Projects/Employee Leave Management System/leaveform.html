@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form to Apply for Leave</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: bisque;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        form {
+            width: 400px;
+            margin: 100px auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 10px;
+            display: block;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            color: rgb(231, 186, 128);
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-left: 9px;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: cornsilk;
+        }
+        input, select, textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 9px;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: block;
+        }
+        textarea {
+            font-weight: lighter;
+            font-size: 1.1em;
+        }
+        button {
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin: 5px 7px;
+            font-weight: bold;
+            background-color: aqua;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="submitForm(event)">
+        <h2>Employee Leave Form</h2>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" required placeholder="Employee Name...">
+
+        <label for="role">Department</label>
+        <input type="text" id="role" required placeholder="Department Name">
+
+        <label for="fromdate">From Date</label>
+        <input type="date" id="fromdate" required>
+
+        <label for="todate">To Date</label>
+        <input type="date" id="todate" required>
+
+        <label for="leave">Type Of Leave</label>
+        <select id="leave" required>
+            <option value="">-- Select Leave Type --</option>
+            <option value="Casual Leave">Casual Leave</option>
+            <option value="Sick Leave">Sick Leave</option>
+            <option value="Paid Leave">Paid Leave</option>
+            <option value="Optional Leave">Optional Leave</option>
+        </select>
+
+        <label for="reason">Reason</label>
+        <textarea id="reason" placeholder="Enter reason..." required></textarea>
+
+        <button type="submit">Apply</button>
+    </form>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Get values
+            let name = document.getElementById("name").value.trim();
+            let role = document.getElementById("role").value.trim();
+            let fromdate = document.getElementById("fromdate").value.trim();
+            let todate = document.getElementById("todate").value.trim();
+            let leave = document.getElementById("leave").value.trim();
+            let reason = document.getElementById("reason").value.trim();
+
+            if (!name || !role || !fromdate || !todate || !leave || !reason) {
+                alert("Please fill all the fields!");
+                return;
+            }
+
+            const employee = {
+                name,
+                role,
+                fromdate,
+                todate,
+                leave,
+                reason,
+                status: "Pending"   // Add default status
+            };
+
+            let employees = JSON.parse(localStorage.getItem("Employees")) || [];
+            employees.push(employee);
+            localStorage.setItem("Employees", JSON.stringify(employees));
+
+            alert("Leave applied successfully!");
+            window.location.href = "index.html";  // or wherever you want to redirect
+        }
+    </script>
+</body>
+</html>

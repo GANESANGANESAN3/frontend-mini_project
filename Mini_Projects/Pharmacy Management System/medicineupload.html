@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Upload Page</title>
+    <style>
+        body{
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            margin:0%;
+            padding:0%;
+            background-color: rgb(154, 212, 193);
+        }
+        form{
+            width: 400px;
+            margin: 150px auto;
+            background-color:rgb(24, 117, 117) ;
+            text-align: center;
+            color: antiquewhite;
+            border-radius: 15px;
+        }
+        h2{
+            color:rgb(238, 80, 80);
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+        label{
+            font-weight: bolder;
+            padding: 9px;
+            margin: 10px;
+            display:block;
+            text-align: left;
+        }
+        input{
+            font-weight: bolder;
+            padding: 10px;
+            border-radius: 9px;
+            width: 50%;
+            text-align: center;
+        }
+        input:hover{
+            background-color: aqua;
+        }
+        input::after{
+            background-color: rgb(115, 190, 165);
+        }
+        button{
+            margin: 20px;
+            padding: 10px 20px;
+            border-radius: 9px;
+            font-weight: bolder;
+
+            background-color:rgb(156, 112, 119);
+        }
+    </style>
+</head>
+<body>
+    <form action="index.html" onsubmit="bthfun(event)">
+        <h2>Medicine Upload</h2>
+       <div>
+           <label for="">Name:</label>
+           <input type="text" id="name" placeholder="Medicine Name">
+       </div>
+       <div>
+           <label for="">Purchse date:</label>
+           <input type="date" id="purchse" required placeholder="Purchse date">
+       </div>
+       <div>
+          <label for="">Expiry Date:</label>
+          <input type="date" id="expiry" placeholder="Expriy date">
+       </div>
+       <div>
+        <label for="">Price:</label>
+        <input type="number" name="" id="price" required placeholder="Price '₹'">
+       </div>
+       <div>
+        <label for="">Quantity</label>
+        <input type="number" id="qty" placeholder="Qty">
+       </div>
+       <div>
+        <button type="submit">Upload</button>
+       </div>
+    </form>
+    <script>
+        function bthfun(event){
+            event.preventDefault(); // ✅ Corrected here
+    
+            let name = document.getElementById("name").value.trim();
+            let purchse = document.getElementById("purchse").value.trim();
+            let expiry = document.getElementById("expiry").value.trim();
+            let price = document.getElementById("price").value.trim();
+            let qty = document.getElementById("qty").value.trim();
+    
+            if (!name || !purchse || !expiry || !price || !qty) {
+                alert("Please fill all the fields!");
+                return;
+            }
+    
+            const medicine = {
+                name,
+                purchse,
+                expiry,
+                price,
+                qty
+            };
+    
+            let medicines = JSON.parse(localStorage.getItem("medicines")) || [];
+            medicines.push(medicine);
+            localStorage.setItem("medicines", JSON.stringify(medicines));
+    
+            alert("Medicine uploaded successfully!");
+            window.location.href = "index.html";
+        }
+    </script>
+    
+</body>
+</html>

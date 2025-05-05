@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Leave Management Software</title>
+  <style>
+    header {
+      background-color: darkcyan;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+    nav a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 10px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+    main {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Smart Employee Leave Management System</h2>
+    <nav>
+      <a href="leaveform.html">Apply Leave</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Employee Dashboard</h2>
+    <button onclick="approveAll()" style="
+      background-color: darkcyan;
+      color: black;
+      padding: 10px 15px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;">Approve All</button>
+
+    <div id="employeeDetails"></div>
+  </main>
+
+  <script>
+    const employeeDetails = document.getElementById("employeeDetails");
+
+    function loadEmployees() {
+      const employees = JSON.parse(localStorage.getItem("Employees")) || [];
+
+      if (employees.length === 0) {
+        employeeDetails.innerHTML = "<p>No Employee Leave Applications yet.</p>";
+        return;
+      }
+
+      const table = document.createElement("table");
+
+      // Create table header
+      const headerRow = document.createElement("tr");
+      const headers = ["Name", "Department", "From Date", "To Date", "Leave Type", "Reason", "Status"];
+      headers.forEach(headerText => {
+        const th = document.createElement("th");
+        th.innerText = headerText;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      // Create table rows for each employee
+      employees.forEach((emp, index) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${emp.name}</td>
+          <td>${emp.role}</td>
+          <td>${emp.fromdate}</td>
+          <td>${emp.todate}</td>
+          <td>${emp.leave}</td>
+          <td>${emp.reason}</td>
+          <td id="status-${index}">${emp.status}</td>
+        `;
+
+        table.appendChild(row);
+      });
+
+      employeeDetails.innerHTML = ""; // Clear before appending
+      employeeDetails.appendChild(table);
+    }
+
+    function approveAll() {
+      let employees = JSON.parse(localStorage.getItem("Employees")) || [];
+
+      employees = employees.map(emp => {
+        emp.status = "Approved"; // Change status
+        return emp;
+      });
+
+      localStorage.setItem("Employees", JSON.stringify(employees));
+      alert("All leaves approved!");
+      loadEmployees(); // Reload table
+    }
+
+    // Load employee details on page load
+    window.onload = loadEmployees;
+  </script>
+</body>
+</html>

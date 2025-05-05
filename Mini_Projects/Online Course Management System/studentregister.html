@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Register</title>
+  <style>
+    body{
+         width: 100%;
+         font-family: Georgia, 'Times New Roman', Times, serif;
+         margin: 0%;
+         padding: 0%;
+         background-color: rgb(243, 236, 224);
+        }
+        form{
+            width: 400px;
+            margin: 200px auto;
+            background-color: rgb(255, 208, 138);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+
+        }
+        label{
+            display: block;
+            text-align: left;
+        }
+        input{
+            padding: 12px;
+            margin: 8px;
+            border-radius: 10px;
+        }
+        
+        select{
+            padding: 10px;
+            border-radius: 9px;
+            font-weight: bolder;
+        }
+        button{
+            padding: 9px 20px;
+            border-radius: 9px;
+            background-color:antiquewhite;
+            margin-top: 8px ;
+        }
+  </style>
+
+
+</head>
+<body>
+    <form action="index.html" onsubmit="bthfun(event)">
+        <div><h2>
+            Students Register
+        </h2></div>
+        <div>
+            <label for="">Name:</label>
+            <input type="text" id="name" required placeholder="Student Name">
+        </div>
+        <div>
+            <label for="">Email:</label>
+            <input type="email" name="email" id="email" required placeholder="Email">
+        </div>
+        <div>
+            <label for="">Degree||Department:</label>
+            <input type="text" id="degree" required placeholder="e.g Computer Science">
+        </div>
+        <div class="gender">
+            <select name="gender" id="gender" >
+                <option value="select gender">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div>
+            <label for="">Phone No:</label>
+            <input type="number" maxlength="10" minlength="10" placeholder="Phone Num" required id="Phone">
+        </div>
+        <div>
+            <button class="bth" type="submit">Register</button>
+        </div>
+        <script>
+            function bthfun(event){
+                event.preventDefault();
+                let name = document.getElementById("name").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let degree = document.getElementById("degree").value.trim();
+                let gender = document.getElementById("gender").value;
+                let phone = document.getElementById("Phone").value.trim();
+            
+                if (!name || !email || !degree || gender === "select gender" || !phone) {
+                    alert("Please fill in all the fields correctly.");
+                    return;
+                }
+            
+                if (phone.length !== 10 || isNaN(phone)) {
+                    alert("Phone number must be a 10-digit number.");
+                    return;
+                }
+            
+                alert("Registered Successfully!");
+                window.location.href="index.html";
+            }
+            </script>
+            
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Your Favorite Candidate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vote for Your Favorite Candidate</h1>
+
+        <form id="votingForm">
+            <label for="candidate1">
+                <input type="radio" id="candidate1" name="candidate" value="Alice"> Alice
+            </label><br>
+            <label for="candidate2">
+                <input type="radio" id="candidate2" name="candidate" value="Bob"> Bob
+            </label><br>
+            <label for="candidate3">
+                <input type="radio" id="candidate3" name="candidate" value="Charlie"> Charlie
+            </label><br><br>
+
+            <button type="submit">Submit Vote</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

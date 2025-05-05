@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Course </title>
+    <style>
+
+    .main1 h2{
+        margin: 0%;
+        
+     }
+header{
+           background-color:#2c3e50;
+           color: beige;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           padding: 15px 30px;
+           flex-wrap: wrap;
+        }
+        header h2{
+           font-size: 1.8em;
+        }
+        nav{
+            display: flex;
+            gap: 20px;
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+      color: #1abc9c;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .main1{
+        padding-left: 25px;
+        font-size: 1em;
+        background-color:  #dbf8ff;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Programing Language Course</h2>
+        <nav>
+             <a href="studentregister.html">Students Register</a>
+             <a href="#about">About Us</a>
+        </nav>
+    </header>
+    <main style="padding: 30px; font-family: Arial, sans-serif; background-color: #ecf0f1;">
+        <section>
+            <h2 style="color:#2c3e50;">Welcome to the Programming Language Course</h2>
+            <p>Our course is designed to help beginners and experienced developers master popular programming languages. We offer hands-on projects, expert instruction, and flexible learning options.</p>
+        </section>
+    
+        <section style="margin-top: 20px;">
+            <h3 style="color:#34495e;">Courses Offered:</h3>
+            <ul style="line-height: 1.8;">
+                <li><a href="#python">💻 Python Programming for Beginners</a></li>
+                <li><a href="#web">🌐 Web Development with HTML, CSS, and JavaScript</a></li>
+                <li><a href="#java">☕ Java Fundamentals and OOP Concepts</a></li>
+                <li><a href="#Mobile">📱 Mobile App Development using Kotlin</a></li>
+                <li><a href="#c++">⚙️ C++ for Game Development</a></li>
+            </ul>
+        </section>
+    
+        <section style="margin-top: 20px;">
+            <h3 style="color:#34495e;">Why Choose Us?</h3>
+            <ul style="line-height: 1.8;">
+                <li>✅ Industry-expert instructors</li>
+                <li>✅ Interactive coding exercises</li>
+                <li>✅ Certification upon completion</li>
+                <li>✅ Flexible self-paced learning</li>
+            </ul>
+        </section>
+    </main>
+    <main class="main1">
+        <div class="pythonbeginners">
+       <h3 id="python"> 💻 Python Programming for Beginners</h3>
+        <p><strong>Goal:</strong> Learn basic syntax, variables, and logic in Python.</p>
+        
+        <p><strong>Lesson 1:</strong> Hello, Python!</p>
+        
+       <p> What is Python?</p>
+       <p> Installing Python & running your first script (print("Hello, world!"))</p> 
+       <p>Variables and data types</p>
+        <p>Basic input/output</p>
+        <p>Simple math operations</p>
+        
+        <p><strong>Practice:</strong>
+        
+        Create a program that asks for your name and age, and prints a greeting.</p>
+        </div>
+        <div class="webdevalop">
+          <h3 id="web"> 🌐 Web Development with HTML, CSS, and JavaScript</h3>
+          <p><strong>Goal:</strong> Build a simple web page using HTML, style it with CSS, and add interactivity with JavaScript.</p>
+            
+           <p><strong> Lesson 1:</strong> Create Your First Web Page</p>
+            
+           <p> What is HTML? Structure with < >, "html", "head", "body", "h1", "p", etc.</p>
+            
+            <p>Add some CSS styles (inline or "style" tag)</p>
+            
+           <p> Use JavaScript to show an alert</p>
+            
+           <p><strong> Practice:</strong>
+            
+            Make a web page that says “Welcome!” with a styled heading and a button that shows an alert when clicked.</p>
+            
+            
+        </div>
+        <div class="java">
+<h3 id="java">☕ Java Fundamentals and OOP Concepts</h3>
+<p><strong>Goal:</strong> Understand the basics of Java and intro to Object-Oriented Programming (OOP).</p>
+
+<p><strong>Lesson 1:</strong> Java Setup and Basics</p>
+
+<p>Install Java & run first program (System.out.println("Hello, Java!");)</p>
+
+<p>Variables, data types, and operators</p>
+
+<p>if, else, and loops (for, while)</p>
+
+<p>Introduction to classes and objects</p>
+
+     <p><strong> Practice:</strong>
+
+           Write a class Person with a name and age, and print out their info.</p>
+        </div>
+  <div class="Mobile">
+   <h3 id="Mobile"> 📱 Mobile App Development using Kotlin</h3>
+<p><strong> Goal:</strong> Build your first Android app using Kotlin.</p>
+
+<p><strong>Lesson 1:</strong> Set Up and Say Hello</p>
+
+<p>Install Android Studio</p>
+
+<p>Create a new project with Kotlin</p>
+
+<p> <strong>Layout basics:</strong> TextView, Button</p>
+
+<p>Add an onClick listener in Kotlin</p>
+
+<p><strong>Practice:</strong>
+
+Make an app that shows a message when a button is pressed.</p>
+
+
+  </div>
+  <div class="c++">
+ <h3 id="c++"> ⚙️ C++ for Game Development</h3>
+<p> <strong>Goal:</strong> Learn C++ basics with a game-focused twist.</p>
+    
+<p><strong>Lesson 1:</strong> C++ Basics</p>
+    
+<p>Setup (IDE like Code::Blocks or VS Code)</p>
+    
+<p> Write your first C++ program (cout <span><<</span> "Hello, Game World!";)</p>
+    
+<p>  Variables, data types, and simple input/output</p>
+    
+<p>  If statements and loops</p>
+    
+<p>  Basics of functions</p>
+    
+   <p><strong> Practice:</strong>
+    
+    Create a simple number guessing game using rand().</p>
+    
+    
+  </div>
+    </main>
+    
+    <footer style="padding: 30px; background-color: #2c3e50; color: white;">
+        <h2 id="about">🙌 About Us</h2>
+        <p>Welcome to our beginner-friendly coding journey! 🚀 We're passionate about helping new learners take their first steps into the world of programming and technology...</p>
+      </footer>
+      </body>
+</html>
